@@ -20,9 +20,6 @@ export default function QuestionItem(props) {
     }
 
     const handleMarksSubmit = () => {
-        // function handleMarksSubmit () {
-
-        console.log('>>>>>>>>>>>hi', props.id);
         const quest = { marks: marks};
         axios.put('http://localhost:5000/api/updateMarksInAttempt/'+props.attemptid+'/'+props.id, quest).then((res)=>{                        
             alert("Review Added Successfully!");
@@ -39,8 +36,7 @@ export default function QuestionItem(props) {
     }
 
     function getAttempts(){
-        axios.get('http://localhost:5000/api/getAllAttempts').then((res)=>{                        
-            // console.log('data', res.data.data);
+        axios.get('http://localhost:5000/api/getAllAttempts').then((res)=>{                       
             setAttms(res.data.data); 
         });
     }

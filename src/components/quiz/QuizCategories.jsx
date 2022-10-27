@@ -1,40 +1,20 @@
-import {
-  Grid,
-  Paper,
-  Select,
-  Button,
-  MenuItem,
-  TextField,
-  Container,
-  Typography,
-  InputLabel,
-  FormControl,
-} from "@mui/material";
-//import axios from "axios";
 import React, { useState, useEffect } from 'react'
 import axios from "axios";
 import { makeStyles } from '@mui/styles';
-import { styles, difficulties, createMarkup } from "../helpers";
-import QuizAnswers from "./QuizAnswers";
-import {trivia_categories,results} from "./Store/category";
+import { styles, difficulties } from "../helpers";
 
 const useStyles = makeStyles((theme) => {
   return styles;
 });
 
 const QuizCategories = () => {
-  const [categories, setCategories] = useState([]);
-  //const [data] = useState([]);
   const [category, setCategory] = useState({ id: "", name: "" });
-
-  const [quizNumber, setQuizNumber] = useState(null);
   const [difficulty, setDifficulty] = useState({ id: "", name: "" });
-
-  const [quizData, setQuizData] = useState([]);
   const classes = useStyles();
   const [subject, setSubject]= React.useState("");
   const [btnEnable, setEnable]= React.useState(false);
   const [subjects, setSub]= React.useState( []);
+
   useEffect(() => {
       getSubjects();
       window.scrollTo(0, "20px");
