@@ -19,6 +19,7 @@ export default function NewSubject() {
         axios.post('http://localhost:5000/api/newSubject', quest).then((res)=>{                        
             alert("Subject Added Successfully!");
         });
+        localStorage.setItem(path,subject);
     }
 
     function getSubjects(){

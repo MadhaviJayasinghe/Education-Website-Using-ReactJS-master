@@ -21,6 +21,7 @@ export default function QuestionItem(props) {
 
     const handleMarksSubmit = () => {
         const quest = { marks: marks};
+        console.log(props.id)
         axios.put('http://localhost:5000/api/updateMarksInAttempt/'+props.attemptid+'/'+props.id, quest).then((res)=>{                        
             alert("Review Added Successfully!");
         });
@@ -29,13 +30,14 @@ export default function QuestionItem(props) {
     
 
     const handleAnswerSubmit = () => {
-        const quest = {quest:props.qid, answer:answer , attempt: props.attemptid, marks:0};
+        const quest = {quest:props.qid, answer:answer , attempt: props.attemptid, marks:0, questionId: props.id};
         axios.post('http://localhost:5000/api/newQuestAttempt', quest).then((res)=>{                        
             alert("Attempt Saved Successfully!");
         });
     }
 
     function getAttempts(){
+        console.log('>>>>>>>>>>>>>>>')
         axios.get('http://localhost:5000/api/getAllAttempts').then((res)=>{                       
             setAttms(res.data.data); 
         });
@@ -69,7 +71,8 @@ return (
         :
         <div class="form-group">
             {props.reviewd ?
-            <><label for="exampleFormControlTextarea1">Marks {props.marks} out of {props.fullm}</label><a style={{paddingTop:"10px"}} href="/studyMaterials">Improve</a></>
+            <><label for="exampleFormControlTextarea1">Marks {props.marks} out of {props.fullm}</label>
+            </>
             
             :
             <>
