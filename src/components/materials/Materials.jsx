@@ -61,7 +61,7 @@ const Materials = () => {
             <h3>You can study below resources to improve your skils</h3><br /><br /><br />
             {items.length > 0 && items.map((element, i) => (
                 element.map((ele, i) => (
-                    <a href={require('../../../src/pdf/' + ele.substring(0, ele.indexOf(' ')))} target="_blank">
+                    <a href={require('../../../src/content/' + ele.substring(0, ele.indexOf(' ')))} target="_blank">
                         <div key={i}>{ele}</div>
                     </a>
                 ))
